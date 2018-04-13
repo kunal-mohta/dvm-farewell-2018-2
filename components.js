@@ -1,11 +1,11 @@
 class Wrapper extends React.Component {
   constructor(props) {
     super(props);
-    let f = 'Front-End Team';
-    let a = 'AppD Team';
-    let v = 'Video Team';
-    let b = 'Back-End Team';
-    let d = 'Design Team';
+    let f = 'Frontend';
+    let a = 'AppD';
+    let v = 'Video';
+    let b = 'Backend';
+    let d = 'Design';
     this.state = {
       people:[
         {
@@ -162,3 +162,37 @@ ReactDOM.render(
   <Wrapper />,
   document.getElementById('wrapper')
 )
+var containers = document.getElementsByClassName('personContainer');
+var pics = document.getElementsByClassName('pic');
+var teams = document.getElementsByClassName('team');
+
+var container = document.getElementsByClassName('personContainer')[0];
+var pic = document.getElementsByClassName('pic')[0];
+var team = document.getElementsByClassName('team')[0];
+
+pic.style.height = (container.clientHeight < container.clientWidth ? container.clientHeight : container.clientWidth)*0.7 + "px";
+
+team.style.top = (container.clientHeight + pic.clientHeight)/2 + "px";
+team.style.transform = "translateY(-50%)";
+
+for(var i=0; i<pics.length; i++)
+{
+  pics[i].style.height = pics[0].style.height;
+}
+for(var i=0; i<teams.length; i++)
+{
+  teams[i].style.top  = teams[0].style.top;
+  teams[i].style.transform = teams[0].style.transform;
+}
+document.addEventListener("keyup", toggle);
+
+var active = 0;
+
+function toggle(e)
+{
+  var length = containers.length;
+  if(e.keyCode == 39)
+  {
+    pics[active].style.width = "0px";
+  }
+}

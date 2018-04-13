@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#container {
+			background-image: url('images/main/1.jpg');
+			background-size: cover;
+			position: relative;
+			width: 100px;
+			height: 100px;
+			margin-left: 100px;
+			width: 0;
+			/*transition: all 0.5s linear;*/
+			/*animation: animate 0.5s linear;*/
+			/*animation-delay: 1s;*/
+			/*transform-origin: 100% 100%;*/
+		}
+		img {
+			height: 100px;
+			width: 100px;
+		}
+		@keyframes animate {
+			from {
+				transform: scaleX(1);
+			}
+			to {
+				transform: scaleX(0);
+			}
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<!-- <img src="images/main/1.jpg"> -->
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#container').animate({width: 100, marginLeft: 0}, {duration: 1000});
+		});
+	</script>
+</body>
+</html>

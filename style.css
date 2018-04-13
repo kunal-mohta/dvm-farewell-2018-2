@@ -1,0 +1,75 @@
+@font-face {
+	font-family: BebasNeue;
+	src: url(./fonts/BebasNeue-Regular.ttf);
+}
+body, html {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: uppercase;
+	font-family: BebasNeue;
+}
+#wrapper {
+	height: 70vh;
+	width: 60vw;
+	position: relative;
+	background: #faf5f9;
+}
+.personContainer {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.pic {
+	position: absolute;	
+	right: 15%;
+	transition: width 0.5s ease-in-out;
+}
+.name {
+	position: absolute;
+	left: 15%;
+	font-size: 7vw;
+	padding: 0;
+	margin: 0;
+}
+.name::before {
+	content: '';
+	position: absolute;
+	width: 30%;
+	height: 3px;
+	border-top: 3px solid #0071bc;
+	border-height: 30%;
+}
+.name::after {
+	content: '';
+	position: absolute;
+	top: calc(100% - 3px);
+	left: 0%;
+	width: 30%;
+	height: 3px;
+	border-bottom: 3px solid #0071bc;
+	border-height: 30%;
+}
+.team {
+	position: absolute;
+	right: 5%;
+	font-size: 8vw;
+	background: -webkit-linear-gradient(#0054bc, #2e3192);
+	background: -o-linear-gradient(#0054bc, #2e3192);
+	background: linear-gradient(#0054bc, #2e3192);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.description {
+	display: none;
+}
+.venue {
+	display: none;
+}
