@@ -30,7 +30,7 @@ body, html {
 .pic {
 	position: absolute;	
 	right: 15%;
-	transition: width 0.5s ease-in-out;
+	transition: all 1s ease-in-out;
 }
 .name {
 	position: absolute;
@@ -38,6 +38,7 @@ body, html {
 	font-size: 7vw;
 	padding: 0;
 	margin: 0;
+	z-index: 999;
 }
 .name::before {
 	content: '';
@@ -57,7 +58,13 @@ body, html {
 	border-bottom: 3px solid #0071bc;
 	border-height: 30%;
 }
-.team {
+.firstname {
+	color: #0071bc;
+}
+.lastname {
+	color: #260e2c;
+}
+.team1 {
 	position: absolute;
 	right: 5%;
 	font-size: 8vw;
@@ -66,10 +73,34 @@ body, html {
 	background: linear-gradient(#0054bc, #2e3192);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+	z-index: 999;
+}
+.team2 {
+	position: absolute;
+	bottom: 0;
+	font-size: 18vw;
+	background: -webkit-linear-gradient(#0054bc, #2e3192);
+	background: -o-linear-gradient(#0054bc, #2e3192);
+	background: linear-gradient(#0054bc, #2e3192);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	opacity: 0.3;
 }
 .description {
 	display: none;
 }
 .venue {
 	display: none;
+}
+.bar {
+	position: absolute;
+	right: 0;
+	top: 5%;
+	height: 20%;
+	width: 60%;
+	background: #000;
+	background: -webkit-linear-gradient(to right, left, #0071bc, #2e3192);
+	background: -o-linear-gradient(to right, #0071bc, #2e3192);
+	background: linear-gradient(to right, #0071bc, #2e3192);
+	transition: all 1s ease-in-out;
 }

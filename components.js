@@ -94,10 +94,11 @@ class PersonContainer extends React.Component {
     let props = this.props;
     return (
       <div className = 'personContainer'>
+        <div className="bar"></div>
+        <Team class = 'team2' content={props.team} />
         <Picture src={props.img} />
         <Name content={props.name} />
         <Team class = 'team1' content={props.team} />
-        <Team class = 'team2' content={props.team} />
         <Id content={props.id} />
         <Description content={props.description}/>
         <Venue venue={props.venue} time={props.time} />
@@ -128,7 +129,7 @@ class Name extends React.Component {
     let props = this.props;
     let name = props.content.split(' ');
     return (
-      <div className = 'name'><span className = 'firstname'>{name[0]}</span><span className = 'lastname'>{name[1]}</span></div>
+      <div className = 'name'><span className = 'firstname'>{name[0]}</span><br/><span className = 'lastname'>{name[1]}</span></div>
     );
   }
 }
@@ -192,26 +193,32 @@ ReactDOM.render(
 )
 var containers = document.getElementsByClassName('personContainer');
 var pics = document.getElementsByClassName('pic');
-var teams = document.getElementsByClassName('team');
+var teams = document.getElementsByClassName('team1');
+var teams2 = document.getElementsByClassName('team2');
+var names = document.getElementsByClassName('name');
+var bars = document.getElementsByClassName('bar');
 
 var container = document.getElementsByClassName('personContainer')[0];
 var pic = document.getElementsByClassName('pic')[0];
-var team = document.getElementsByClassName('team')[0];
+var team1 = document.getElementsByClassName('team1')[0];
 
 pic.style.height = (container.clientHeight < container.clientWidth ? container.clientHeight : container.clientWidth)*0.7 + "px";
 
-team.style.top = (container.clientHeight + pic.clientHeight)/2 + "px";
-team.style.transform = "translateY(-50%)";
+team1.style.top = (container.clientHeight + pic.clientHeight)/2 + "px";
+team1.style.transform = "translateY(-50%)";
 
-for(var i=0; i<pics.length; i++)
+for(var i=1; i<pics.length; i++)
 {
   pics[i].style.height = pics[0].style.height;
-}
-for(var i=0; i<teams.length; i++)
-{
   teams[i].style.top  = teams[0].style.top;
   teams[i].style.transform = teams[0].style.transform;
+  pics[i].style.opacity = 0;
+  teams[i].style.opacity = 0;
+  teams2[i].style.opacity = 0;
+  names[i].style.opacity = 0;
+  bars[i].style.width = 0;
 }
+
 document.addEventListener("keyup", toggle);
 
 var active = 0;
@@ -221,6 +228,10 @@ function toggle(e)
   var length = containers.length;
   if(e.keyCode == 39)
   {
-    pics[active].style.width = "0px";
+    pics[active].style.opacity = 0;
+    setTimeout(function(){pics[active+1].style.opacity = 1;}, 1100);
+    bars[active].style.width = 0;
+    setTimeout(function(){bars[++active].style.width = "60%";}, 1200);
+    // teams[active].style.top = ;
   }
 }
