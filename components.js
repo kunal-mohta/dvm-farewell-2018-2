@@ -1,11 +1,11 @@
 class Wrapper extends React.Component {
   constructor(props) {
     super(props);
-    let f = 'Front-End Team';
-    let a = 'AppD Team';
-    let v = 'Video Team';
-    let b = 'Back-End Team';
-    let d = 'Design Team';
+    let f = 'Frontend';
+    let a = 'AppD';
+    let v = 'Video';
+    let b = 'Backend';
+    let d = 'Design';
     this.state = {
       people:[
         {
@@ -125,9 +125,10 @@ class Name extends React.Component {
   }
 
   render() {
-    let props = this.props;    
+    let props = this.props;
+    let name = props.content.split(' ');
     return (
-      <div className = 'name'>{props.content}</div>
+      <div className = 'name'><span className = 'firstname'>{name[0]}</span><span className = 'lastname'>{name[1]}</span></div>
     );
   }
 }
