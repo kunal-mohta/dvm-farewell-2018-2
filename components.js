@@ -264,8 +264,6 @@ $(document).ready(function(){
         next=active+1;
       pics[active].style.opacity = "0";
       setTimeout(function(){pics[next].style.opacity = 1;}, 300);
-      teams2[active].style.opacity = "0";
-      setTimeout(function(){teams2[next].style.opacity = 0.3;}, 500);
       bars[active].style.width = "0px";
       setTimeout(function(){bars[next].style.width = barLength;}, 750);
 
@@ -275,6 +273,14 @@ $(document).ready(function(){
       $('.team1:eq('+active+')').animate({
         top: "110%"
       });
+      $('.team2:eq('+active+')').animate({
+        opacity: '0',
+      }, 500);
+      setTimeout(function(){
+        $('.team2:eq('+(next)+')').animate({
+          opacity: '0.3',
+        }, 600);
+      }, 450);
       $('.name:eq('+active+')').animate({
         width: '0',
         opacity: '0',
@@ -296,7 +302,8 @@ $(document).ready(function(){
   
   function prevPerson()
   {
-    if(isAnimationRunning) return false;
+    if(isAnimationRunning) 
+      return false;
     else {
       isAnimationRunning = 1;
       if(active==0)
@@ -305,8 +312,6 @@ $(document).ready(function(){
         prev=active-1;
       pics[active].style.opacity = "0";
       setTimeout(function(){pics[prev].style.opacity = 1;}, 300);
-      teams2[active].style.opacity = "0";
-      setTimeout(function(){teams2[prev].style.opacity = 0.3;}, 500);
       bars[active].style.width = "0px";
       setTimeout(function(){bars[prev].style.width = barLength;}, 750);
 
@@ -316,6 +321,14 @@ $(document).ready(function(){
       $('.team1:eq('+active+')').animate({
         top: "110%"
       });
+      $('.team2:eq('+active+')').animate({
+        opacity: '0',
+      }, 500);
+      setTimeout(function(){
+        $('.team2:eq('+(prev)+')').animate({
+          opacity: '0.3',
+        }, 600);
+      }, 450);
       $('.name:eq('+active+')').animate({
         width: '0',
         opacity: '0',
