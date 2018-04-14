@@ -230,6 +230,7 @@ $(document).ready(function(){
 
   for(var i=1; i<pics.length; i++)
   {
+    containers[i].style.display = 'none';
     pics[i].style.height = pics[0].style.height;
     teams[i].style.top  = teams[0].style.top;
     teams[i].style.transform = teams[0].style.transform;
@@ -262,6 +263,7 @@ $(document).ready(function(){
         next = 0;
       else
         next=active+1;
+      containers[next].style.display = 'flex';
       pics[active].style.opacity = "0";
       setTimeout(function(){pics[next].style.opacity = 1;}, 300);
       bars[active].style.width = "0px";
@@ -310,6 +312,7 @@ $(document).ready(function(){
         prev = containers.length-1;
       else
         prev=active-1;
+      containers[prev].style.display = 'flex';
       pics[active].style.opacity = "0";
       setTimeout(function(){pics[prev].style.opacity = 1;}, 300);
       bars[active].style.width = "0px";
