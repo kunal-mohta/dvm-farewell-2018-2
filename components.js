@@ -237,21 +237,25 @@ $(document).ready(function(){
   document.addEventListener("keyup", toggle);
 
   var active = 0;
-
+  var next, prev;
   function toggle(e)
   {
     var length = containers.length;
     if(e.keyCode == 39)
     {
+      if(active==containers.length-1)
+        next = 0;
+      else
+        next=active+1;
       pics[active].style.opacity = "0";
-      setTimeout(function(){pics[active+1].style.opacity = 1;}, 300);
+      setTimeout(function(){pics[next].style.opacity = 1;}, 300);
       teams2[active].style.opacity = "0";
-      setTimeout(function(){teams2[active+1].style.opacity = 0.3;}, 500);
+      setTimeout(function(){teams2[next].style.opacity = 0.3;}, 500);
       bars[active].style.width = "0px";
-      setTimeout(function(){bars[active+1].style.width = "60%";}, 750);
+      setTimeout(function(){bars[next].style.width = "60%";}, 750);
 
       sideBars[active].style.width = "7%";
-      setTimeout(function(){sideBars[active+1].style.width='100%';}, 500);  
+      setTimeout(function(){sideBars[next].style.width='100%';}, 500);  
 
       $('.team1:eq('+active+')').animate({
         top: "110%"
@@ -261,17 +265,54 @@ $(document).ready(function(){
         opacity: '0',
       }, 1000);
       setTimeout(function(){
-        $('.name:eq('+(active+1)+')').animate({
+        $('.name:eq('+(next)+')').animate({
           width: '200px',
           opacity: '1',
         });
       }, 1100);
       setTimeout(function(){
-        $('.team1:eq('+(active+1)+')').animate({
+        $('.team1:eq('+(next)+')').animate({
           top: (container.clientHeight + pic.clientHeight)/2 + "px"
         });
       }, 600);
-      setTimeout(function(){active=active+1;}, 1300);
+      setTimeout(function(){active=next;}, 1300);
+    }
+    
+    if(e.keyCode == 37)
+    {
+      if(active==0)
+        prev = containers.length-1;
+      else
+        prev=active-1;
+      pics[active].style.opacity = "0";
+      setTimeout(function(){pics[prev].style.opacity = 1;}, 300);
+      teams2[active].style.opacity = "0";
+      setTimeout(function(){teams2[prev].style.opacity = 0.3;}, 500);
+      bars[active].style.width = "0px";
+      setTimeout(function(){bars[prev].style.width = "60%";}, 750);
+
+      sideBars[active].style.width = "7%";
+      setTimeout(function(){sideBars[prev].style.width='100%';}, 500);  
+
+      $('.team1:eq('+active+')').animate({
+        top: "110%"
+      });
+      $('.name:eq('+active+')').animate({
+        width: '0',
+        opacity: '0',
+      }, 1000);
+      setTimeout(function(){
+        $('.name:eq('+(prev)+')').animate({
+          width: '200px',
+          opacity: '1',
+        });
+      }, 1100);
+      setTimeout(function(){
+        $('.team1:eq('+(prev)+')').animate({
+          top: (container.clientHeight + pic.clientHeight)/2 + "px"
+        });
+      }, 600);
+      setTimeout(function(){active=prev;}, 1300);
     }
   }
 });
