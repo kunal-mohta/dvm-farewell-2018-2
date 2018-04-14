@@ -386,7 +386,7 @@ $(document).ready(function(){
   }
 
   function fadeToMain() {
-    document.getElementById("side-wrap").display = "flex";
+    document.getElementById('side-wrap').style.display = "flex";
     $('#home').animate({
       opacity: '0',
     }, 500);
