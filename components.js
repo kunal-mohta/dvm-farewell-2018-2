@@ -1,10 +1,10 @@
 class Wrapper extends React.Component {
   constructor(props) {
     super(props);
-    let f = 'Frontend';
+    let f = 'Front';
     let a = 'AppDev';
     let v = 'Video';
-    let b = 'Backend';
+    let b = 'Back';
     let d = 'Design';
     this.state = {
       people:[
@@ -206,7 +206,17 @@ $(document).ready(function(){
 
   pic.style.height = (container.clientHeight < container.clientWidth ? container.clientHeight : container.clientWidth)*0.7 + "px";
 
-  team1.style.top = (container.clientHeight + pic.clientHeight)/2 + "px";
+  var barLength, teamTop;
+  if(screen.width <= 600) {
+    barLength = "85%";
+    teamTop = "91%";
+  }
+  else {
+    barLength = "65%";
+    teamTop = (container.clientHeight + pic.clientHeight)/2 + "px";
+  }
+
+  team1.style.top = teamTop;
   team1.style.transform = "translateY(-50%)";
   
   for(var i=0; i<containers.length; i++)
@@ -225,7 +235,7 @@ $(document).ready(function(){
     teams[i].style.transform = teams[0].style.transform;
     pics[i].style.opacity = 0;
     // teams[i].style.opacity = 0;
-    teams[i].style.top = "120%";
+    teams[i].style.top = "110%";
     teams[i].style.transform = "translateY(-50%)";
     // teams[i].style.width = 0;
     teams2[i].style.opacity = 0;
@@ -234,15 +244,20 @@ $(document).ready(function(){
     bars[i].style.width = 0;
   }
 
-  document.addEventListener("keyup", toggle);
-
   var active = 0;
   var next, prev;
-  function toggle(e)
+
+  var length = containers.length;
+
+  var isAnimationRunning = 0;
+
+  function nextPerson()
   {
-    var length = containers.length;
-    if(e.keyCode == 39)
-    {
+    if(isAnimationRunning) return false;
+
+    else{
+      isAnimationRunning = 1;
+
       if(active==containers.length-1)
         next = 0;
       else
@@ -252,7 +267,7 @@ $(document).ready(function(){
       teams2[active].style.opacity = "0";
       setTimeout(function(){teams2[next].style.opacity = 0.3;}, 500);
       bars[active].style.width = "0px";
-      setTimeout(function(){bars[next].style.width = "60%";}, 750);
+      setTimeout(function(){bars[next].style.width = barLength;}, 750);
 
       sideBars[active].style.width = "7%";
       setTimeout(function(){sideBars[next].style.width='100%';}, 500);  
@@ -272,14 +287,18 @@ $(document).ready(function(){
       }, 1100);
       setTimeout(function(){
         $('.team1:eq('+(next)+')').animate({
-          top: (container.clientHeight + pic.clientHeight)/2 + "px"
+          top: teamTop
         });
       }, 600);
-      setTimeout(function(){active=next;}, 1300);
-    }
-    
-    if(e.keyCode == 37)
-    {
+      setTimeout(function(){active=next; isAnimationRunning = 0;}, 1300);
+      }
+  }
+  
+  function prevPerson()
+  {
+    if(isAnimationRunning) return false;
+    else {
+      isAnimationRunning = 1;
       if(active==0)
         prev = containers.length-1;
       else
@@ -289,7 +308,7 @@ $(document).ready(function(){
       teams2[active].style.opacity = "0";
       setTimeout(function(){teams2[prev].style.opacity = 0.3;}, 500);
       bars[active].style.width = "0px";
-      setTimeout(function(){bars[prev].style.width = "60%";}, 750);
+      setTimeout(function(){bars[prev].style.width = barLength;}, 750);
 
       sideBars[active].style.width = "7%";
       setTimeout(function(){sideBars[prev].style.width='100%';}, 500);  
@@ -309,10 +328,61 @@ $(document).ready(function(){
       }, 1100);
       setTimeout(function(){
         $('.team1:eq('+(prev)+')').animate({
-          top: (container.clientHeight + pic.clientHeight)/2 + "px"
+          top: teamTop
         });
       }, 600);
-      setTimeout(function(){active=prev;}, 1300);
+      setTimeout(function(){active=prev; isAnimationRunning = 0;}, 1300);
     }
   }
+
+  function toggle(e)
+  {
+    if(e.keyCode == 39)
+    {
+      nextPerson();
+    }
+    
+    if(e.keyCode == 37)
+    {
+      prevPerson();
+    }
+  }  
+
+  function scrollToggle(e)
+  {
+    if(e.deltaY > 0) nextPerson();
+  
+    else if(e.deltaY < 0) prevPerson();
+  }
+
+  function domscrollToggle(e)
+  {
+    if(e.detail > 0) nextPerson();
+
+    else if(e.detail < 0) prevPerson();
+  }
+
+  document.addEventListener("keyup", toggle);
+  document.addEventListener("mousewheel", scrollToggle);
+  document.addEventListener("DOMMouseScroll", domscrollToggle);
+
+
+  var x1, y1;
+
+  //touch
+  document.addEventListener("touchstart", function(e){
+    x1 = e.changedTouches[0].pageX;
+    y1 = e.changedTouches[0].pageY;
+  });
+
+  document.addEventListener("touchend", function(e){
+    var deltaX = e.changedTouches[0].pageX - x1;
+    var deltaY = e.changedTouches[0].pageY - y1;
+
+      //left
+      if(deltaX < 0) nextPerson();
+
+      //right
+      else if(deltaY > 0) prevPerson();
+  });
 });
