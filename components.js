@@ -2,7 +2,7 @@ class Wrapper extends React.Component {
   constructor(props) {
     super(props);
     let f = 'Frontend';
-    let a = 'AppD';
+    let a = 'AppDev';
     let v = 'Video';
     let b = 'Backend';
     let d = 'Design';
@@ -208,6 +208,15 @@ $(document).ready(function(){
 
   team1.style.top = (container.clientHeight + pic.clientHeight)/2 + "px";
   team1.style.transform = "translateY(-50%)";
+  
+  for(var i=0; i<containers.length; i++)
+  {
+    document.getElementById("side-wrap").innerHTML+='<div class="side-bar"></div>';
+  }
+
+  var sideBars = document.getElementsByClassName("side-bar");
+
+  sideBars[0].style.width = '100%';
 
   for(var i=1; i<pics.length; i++)
   {
@@ -215,8 +224,12 @@ $(document).ready(function(){
     teams[i].style.top  = teams[0].style.top;
     teams[i].style.transform = teams[0].style.transform;
     pics[i].style.opacity = 0;
-    teams[i].style.opacity = 0;
+    // teams[i].style.opacity = 0;
+    teams[i].style.top = "120%";
+    teams[i].style.transform = "translateY(-50%)";
+    // teams[i].style.width = 0;
     teams2[i].style.opacity = 0;
+    names[i].style.width = 0;
     names[i].style.opacity = 0;
     bars[i].style.width = 0;
   }
@@ -230,15 +243,35 @@ $(document).ready(function(){
     var length = containers.length;
     if(e.keyCode == 39)
     {
-      pics[active].style.opacity = 0;
-      setTimeout(function(){pics[active+1].style.opacity = 1;}, 1100);
-      bars[active].style.width = 0;
-      setTimeout(function(){bars[++active].style.width = "60%";}, 1200);
-      // teams[active].style.top = ;
+      pics[active].style.opacity = "0";
+      setTimeout(function(){pics[active+1].style.opacity = 1;}, 300);
+      teams2[active].style.opacity = "0";
+      setTimeout(function(){teams2[active+1].style.opacity = 0.3;}, 500);
+      bars[active].style.width = "0px";
+      setTimeout(function(){bars[active+1].style.width = "60%";}, 750);
 
-      $('.name:eq(0), .team1:eq(0), .team2:eq(0), .idno:eq(0)').animate({
-        width:'toggle'
+      sideBars[active].style.width = "7%";
+      setTimeout(function(){sideBars[active+1].style.width='100%';}, 500);  
+
+      $('.team1:eq('+active+')').animate({
+        top: "110%"
       });
+      $('.name:eq('+active+')').animate({
+        width: '0',
+        opacity: '0',
+      }, 1000);
+      setTimeout(function(){
+        $('.name:eq('+(active+1)+')').animate({
+          width: '200px',
+          opacity: '1',
+        });
+      }, 1100);
+      setTimeout(function(){
+        $('.team1:eq('+(active+1)+')').animate({
+          top: (container.clientHeight + pic.clientHeight)/2 + "px"
+        });
+      }, 600);
+      setTimeout(function(){active=active+1;}, 1300);
     }
   }
 });

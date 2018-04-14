@@ -32,8 +32,10 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	overflow: hidden;
 }
 .pic {
+	z-index: 99;
 	position: absolute;	
 	right: 15%;
 	transition: all 1s ease-in-out;
@@ -79,7 +81,9 @@ body {
 	background: linear-gradient(#0054bc, #2e3192);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+	transition: all 0.5s ease-in-out;
 	z-index: 999;
+	bottom: -10%;
 }
 .team2 {
 	position: absolute;
@@ -90,6 +94,7 @@ body {
 	background: linear-gradient(#0054bc, #2e3192);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+	transition: all 0.6s ease-in-out;
 	opacity: 0.3;
 }
 .description {
@@ -99,7 +104,8 @@ body {
 	display: none;
 }
 .bar {
-  display:none;
+	z-index: 1;
+	display: none;
 }
 .bar:nth-child(1) {
   display: block;
@@ -112,7 +118,7 @@ body {
 	background: -webkit-linear-gradient(to right, left, #0071bc, #2e3192);
 	background: -o-linear-gradient(to right, #0071bc, #2e3192);
 	background: linear-gradient(to right, #0071bc, #2e3192);
-	transition: all 1s ease-in-out;
+	transition: all 0.7s ease-in-out;
 }
 .idno {
   position: absolute;
@@ -120,6 +126,30 @@ body {
   left: 6%;
   font-size: 6vh;
   color: #260e2c;
+}
+
+#side-wrap {
+	position: absolute;
+	right: 0;
+	width: 5%;
+	height: 60%;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 9999;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.side-bar {
+	width: 7%;
+	height: 7%;
+	z-index: 9999;
+	background: #001f34;
+	margin-bottom: 10%;
+	transition: all 0.5s ease-in-out;
+}
+.side-bar:last-child {
+	margin-bottom: 0;
 }
 
 @media all and (max-width : 600px){
