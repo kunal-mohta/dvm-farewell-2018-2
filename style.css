@@ -137,6 +137,7 @@ body {
   left: 6%;
   font-size: 6vh;
   color: #260e2c;
+  display: none;
 }
 
 
@@ -168,19 +169,68 @@ body {
 }
 
 
-/* #home-wrap {
+#home-wrap {
   height: 70vh;
 	width: 60vw;
 	position: relative;
   background: url('./images/whitebox.png');
   background-size: cover;
-} */
-
-/* .logo {
+} 
+.logo {
   position: absolute;	
-	right: 15%;
-} */
-
+  width:50%;
+	right: 5%;
+}
+.farewell-front {
+  position: absolute;
+  top: 5%;
+  left: 6%;
+  font-size: 6vh;
+  color: #260e2c;
+}
+.farewell-back {
+  width:100%;
+  text-align: center;
+  position: absolute;
+	bottom: 0%;
+	font-size: 19vw;
+	background: -webkit-linear-gradient(#0054bc, #2e3192);
+	background: -o-linear-gradient(#0054bc, #2e3192);
+	background: -moz-linear-gradient(#0054bc, #2e3192);	
+	background: linear-gradient(#0054bc, #2e3192);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	opacity: 0.3;
+}
+.dept-name {
+  position: absolute;
+  left: 10%;
+  top:35%;
+	font-size: 9vw;
+	padding: 0;
+  margin: 0;
+  line-height: 90%;
+  z-index: 10;
+}
+.dept-name::before {
+	content: '';
+  position: absolute;
+  top:-5%;
+	width: 30%;
+	height: 3px;
+	border-top: 3px solid #0071bc;
+	border-height: 30%;
+}
+.dept-name::after {
+	content: '';
+	position: absolute;
+	top: calc(100% - 3px);
+	left: 0%;
+	width: 30%;
+	height: 3px;
+	border-bottom: 3px solid #0071bc;
+	border-height: 30%;
+}
 
 @media all and (max-width : 600px){
 #wrapper {
@@ -214,5 +264,10 @@ body {
 }
 #side-wrap {
   display:none;
+}
+
+#home-wrap {
+  height: 90vh;
+  width: 90vw;
 }
 }
