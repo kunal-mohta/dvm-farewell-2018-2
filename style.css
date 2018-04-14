@@ -11,13 +11,19 @@ body, html {
 	align-items: center;
 	justify-content: center;
 	text-transform: uppercase;
-	font-family: BebasNeue;
+  font-family: BebasNeue;
+  overflow: hidden;
+}
+body {
+  background: url('./images/bg.png');
+  background-size: cover;
 }
 #wrapper {
 	height: 70vh;
 	width: 60vw;
 	position: relative;
-	background: #faf5f9;
+  background: url('./images/whitebox.png');
+  background-size: cover;
 }
 .personContainer {
 	position: absolute;
@@ -93,6 +99,10 @@ body, html {
 	display: none;
 }
 .bar {
+  display:none;
+}
+.bar:nth-child(1) {
+  display: block;
 	position: absolute;
 	right: 0;
 	top: 5%;
@@ -103,4 +113,18 @@ body, html {
 	background: -o-linear-gradient(to right, #0071bc, #2e3192);
 	background: linear-gradient(to right, #0071bc, #2e3192);
 	transition: all 1s ease-in-out;
+}
+.idno {
+  position: absolute;
+  top: 5%;
+  left: 6%;
+  font-size: 6vh;
+  color: #260e2c;
+}
+
+@media all and (max-width : 600px){
+.pic {
+  right: 0%;
+}
+
 }
