@@ -1,72 +1,101 @@
 class Wrapper extends React.Component {
   constructor(props) {
     super(props);
-    let f = 'Front';
-    let a = 'AppDev';
-    let v = 'Video';
-    let b = 'Back';
-    let d = 'Design';
+    let f1 = 'Frontend';
+    let a1 = 'AppDev';
+    let v1 = 'Video';
+    let b1 = 'Backend';
+    let d1 = 'Design';
+    let f2 = 'Front';
+    let a2 = 'AppDev';
+    let v2 = 'Video';
+    let b2 = 'Back';
+    let d2 = 'Design';
     this.state = {
       people:[
         {
           name:'Prateek Gupta',
-          team:f,
-          id:'2017xxpsxxxxp'
+          team1:f1,
+          team2:f2,
+          id:'2017xxpsxxxxp',
+          format:'jpg'
         },
         {
           name:'Shivani Mittal',
-          team:a,
-          id:'2017xxpsxxxxp'
+          team1:a1,
+          team2:a2,
+          id:'2017xxpsxxxxp',
+          format:'jpg'
         },
         {
           name:'Jai Agarwal',
-          team:a,
-          id:'2017xxpsxxxxp'
+          team1:a1,
+          team2:a2,
+          id:'2017xxpsxxxxp',
+          format:'jpg'
         },
         {
           name:'Arjun Tyagi',
-          team:v,
-          id:'2017xxpsxxxxp'
+          team1:v1,
+          team2:v2,
+          id:'2017xxpsxxxxp',
+          format:'jpg'
         },
         {
           name:'Vihang Shah',
-          team:d,
-          id:'2017xxpsxxxxp'
+          team1:d1,
+          team2:d2,
+          id:'2017xxpsxxxxp',
+          format:'jpg'
         },
         {
           name:'Vishal Hans',
-          team:d,
-          id:'2017xxpsxxxxp'
+          team1:d1,
+          team2:d2,
+          id:'2017xxpsxxxxp',
+          format:'jpg'
         },
         {
           name:'Amey Agarwal',
-          team:d,
-          id:'2017xxpsxxxxp'
+          team1:d1,
+          team2:d2,
+          id:'2017xxpsxxxxp',
+          format:'png'
         },
         {
           name:'Satwik Bhattamishra',
-          team:b,
-          id:'2017xxpsxxxxp'
+          team1:b1,
+          team2:b2,
+          id:'2017xxpsxxxxp',
+          format:'jpg'
         },
         {
           name:'Kalpit Munot',
-          team:v,
-          id:'2017xxpsxxxxp'
+          team1:v1,
+          team2:v2,
+          id:'2017xxpsxxxxp',
+          format:'jpg'
         },
         {
           name:'Kunal Sharma',
-          team:b,
-          id:'2017xxpsxxxxp'
+          team1:b1,
+          team2:b2,
+          id:'2017xxpsxxxxp',
+          format:'jpg'
         },
         {
           name:'Piyush Ranjan',
-          team:f,
-          id:'2017xxpsxxxxp'
+          team1:f1,
+          team2:f2,
+          id:'2017xxpsxxxxp',
+          format:'jpg'
         },
         {
           name:'Nitish Kundala',
-          team:a,
-          id:'2017xxpsxxxxp'
+          team1:a1,
+          team2:a2,
+          id:'2017xxpsxxxxp',
+          format:'jpg'
         }
       ],
       venue:'Kamal',
@@ -79,7 +108,7 @@ class Wrapper extends React.Component {
     let people = this.state.people;
     return (
       people.map((person, index) => 
-        <PersonContainer key={index} name={person.name} team={person.team} id={person.id} img={`./images/main/${index+1}.jpg`} venue={this.state.venue} time={this.state.time} description={this.state.description}/>
+        <PersonContainer key={index} name={person.name} team1={person.team1} team2={person.team2} id={person.id} img={`./images/main/${index+1}.${person.format}`} venue={this.state.venue} time={this.state.time} description={this.state.description}/>
       )
     );
   }
@@ -95,10 +124,10 @@ class PersonContainer extends React.Component {
     return (
       <div className = 'personContainer'>
         <div className="bar"></div>
-        <Team class = 'team2' content={props.team} />
+        <Team class = 'team2' content={props.team2} />
         <Picture src={props.img} />
         <Name content={props.name} />
-        <Team class = 'team1' content={props.team} />
+        <Team class = 'team1' content={props.team1} />
         <Id content={props.id} />
         <Description content={props.description}/>
         <Venue venue={props.venue} time={props.time} />
@@ -202,6 +231,7 @@ $(document).ready(function(){
   var bars = document.getElementsByClassName('bar');
   
   containers[0].style.opacity = 0;
+  document.getElementById("side-wrap").style.display = "none";
   document.getElementById("side-wrap").style.opacity = 0;
   
   var container = document.getElementsByClassName('personContainer')[0];
@@ -355,6 +385,18 @@ $(document).ready(function(){
     }
   }
 
+  function fadeToMain() {
+    document.getElementById("side-wrap").display = "flex";
+    $('#home').animate({
+      opacity: '0',
+    }, 500);
+    setTimeout(function(){
+      containers[0].style.opacity = 1;
+      document.getElementById('side-wrap').style.opacity = 1;
+    }, 400);
+    state=!state;
+  }
+
   function toggle(e)
   {
     if(state)
@@ -371,30 +413,44 @@ $(document).ready(function(){
     }
     if(!state)
     {
-      $('#home').animate({
-        opacity: '0',
-      }, 500);
-      setTimeout(function(){
-        containers[0].style.opacity = 1;
-        document.getElementById('side-wrap').style.opacity = 1;
-      }, 400);
-      state=!state;
+      fadeToMain();
     }
   }  
 
   function scrollToggle(e)
   {
-    if(e.deltaY > 0) nextPerson();
+    if(state){
+      if(e.deltaY > 0) nextPerson();
   
-    else if(e.deltaY < 0) prevPerson();
+      else if(e.deltaY < 0) prevPerson();
+    }
+    if(!state)
+    {
+      fadeToMain();
+    }
   }
 
   function domscrollToggle(e)
   {
-    if(e.detail > 0) nextPerson();
+    if(state){
+      if(e.detail > 0) nextPerson();
 
-    else if(e.detail < 0) prevPerson();
+      else if(e.detail < 0) prevPerson();
+    }
+    if(!state)
+    {
+      fadeToMain();
+    }
   }
+
+  document.getElementsByClassName("click-here")[0].addEventListener("click", function(){
+    if(state) return false;
+
+    if(!state)
+    {
+      fadeToMain();
+    }
+  });
 
   document.addEventListener("keyup", toggle);
   document.addEventListener("mousewheel", scrollToggle);
@@ -405,18 +461,22 @@ $(document).ready(function(){
 
   //touch
   document.addEventListener("touchstart", function(e){
-    x1 = e.changedTouches[0].pageX;
-    y1 = e.changedTouches[0].pageY;
+    if(state){
+      x1 = e.changedTouches[0].pageX;
+      y1 = e.changedTouches[0].pageY;
+    }
   });
 
   document.addEventListener("touchend", function(e){
-    var deltaX = e.changedTouches[0].pageX - x1;
-    var deltaY = e.changedTouches[0].pageY - y1;
-
-      //left
-      if(deltaX < 0) nextPerson();
-
-      //right
-      else if(deltaY > 0) prevPerson();
+    if(state){
+      var deltaX = e.changedTouches[0].pageX - x1;
+      var deltaY = e.changedTouches[0].pageY - y1;
+  
+        //left
+        if(deltaX < 0) prevPerson();
+  
+        //right
+        else if(deltaY > 0) nextPerson();
+    }
   });
 });
