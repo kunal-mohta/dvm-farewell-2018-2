@@ -193,13 +193,17 @@ ReactDOM.render(
 )
 
 $(document).ready(function(){
+  var state = 0;
   var containers = document.getElementsByClassName('personContainer');
   var pics = document.getElementsByClassName('pic');
   var teams = document.getElementsByClassName('team1');
   var teams2 = document.getElementsByClassName('team2');
   var names = document.getElementsByClassName('name');
   var bars = document.getElementsByClassName('bar');
-
+  
+  containers[0].style.opacity = 0;
+  document.getElementById("side-wrap").style.opacity = 0;
+  
   var container = document.getElementsByClassName('personContainer')[0];
   var pic = document.getElementsByClassName('pic')[0];
   var team1 = document.getElementsByClassName('team1')[0];
@@ -353,14 +357,28 @@ $(document).ready(function(){
 
   function toggle(e)
   {
-    if(e.keyCode == 39)
+    if(state)
     {
-      nextPerson();
+      if(e.keyCode == 39)
+      {
+        nextPerson();
+      }
+      
+      if(e.keyCode == 37)
+      {
+        prevPerson();
+      }
     }
-    
-    if(e.keyCode == 37)
+    if(!state)
     {
-      prevPerson();
+      $('#home').animate({
+        opacity: '0',
+      }, 500);
+      setTimeout(function(){
+        containers[0].style.opacity = 1;
+        document.getElementById('side-wrap').style.opacity = 1;
+      }, 400);
+      state=!state;
     }
   }  
 

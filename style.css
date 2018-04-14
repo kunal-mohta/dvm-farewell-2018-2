@@ -33,6 +33,10 @@ body {
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
+	-webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 .pic {
 	z-index: 99;
@@ -126,10 +130,10 @@ body {
 	background: -webkit-linear-gradient(to right, left, #0071bc, #2e3192);
 	background: -o-linear-gradient(to right, #0071bc, #2e3192);
 	background: linear-gradient(to right, #0071bc, #2e3192);
-  transition: all 0.7s ease-in-out;
   -webkit-transition: all 0.7s ease-in-out;
   -moz-transition: all 0.7s ease-in-out;
   -o-transition: all 0.7s ease-in-out;
+  transition: all 0.7s ease-in-out;
 }
 .idno {
   position: absolute;
@@ -152,6 +156,10 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	-webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 .side-bar {
 	width: 7%;
@@ -215,7 +223,7 @@ body {
 .dept-name::before {
 	content: '';
   position: absolute;
-  top:-5%;
+  top:-6%;
 	width: 30%;
 	height: 3px;
 	border-top: 3px solid #0071bc;
