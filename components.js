@@ -189,7 +189,7 @@ class Venue extends React.Component {
 
 ReactDOM.render(
   <Wrapper />,
-  document.getElementById('wrapper')
+  document.getElementById('main-wrap')
 )
 
 $(document).ready(function(){
