@@ -14,12 +14,28 @@ class Wrapper extends React.Component {
     this.state = {
       people:[
         {
+          name:'Arjun Tyagi',
+          team1:v1,
+          team2:v2,
+          id:'2017xxpsxxxxp',
+          format:'jpg',
+          index: 4
+        },
+        {
           name:'Prateek Gupta',
           team1:f1,
           team2:f2,
           id:'2017xxpsxxxxp',
           format:'jpg',
           index: 1
+        },
+        {
+          name:'Vihang Shah',
+          team1:d1,
+          team2:d2,
+          id:'2017xxpsxxxxp',
+          format:'jpg',
+          index: 5
         },
         {
           name:'Shivani Mittal',
@@ -38,36 +54,12 @@ class Wrapper extends React.Component {
           index: 3
         },
         {
-          name:'Arjun Tyagi',
-          team1:v1,
-          team2:v2,
-          id:'2017xxpsxxxxp',
-          format:'jpg',
-          index: 4
-        },
-        {
-          name:'Vihang Shah',
-          team1:d1,
-          team2:d2,
-          id:'2017xxpsxxxxp',
-          format:'jpg',
-          index: 5
-        },
-        {
           name:'Vishal Hans',
           team1:d1,
           team2:d2,
           id:'2017xxpsxxxxp',
           format:'jpg',
           index: 6
-        },
-        {
-          name:'Amey Agarwal',
-          team1:d1,
-          team2:d2,
-          id:'2017xxpsxxxxp',
-          format:'png',
-          index: 7
         },
         {
           name:'Satwik Bhattamishra',
@@ -83,15 +75,15 @@ class Wrapper extends React.Component {
           team2:v2,
           id:'2017xxpsxxxxp',
           format:'jpg',
-          index: 9
+          index: 10
         },
         {
-          name:'Kunal Sharma',
-          team1:b1,
-          team2:b2,
+          name:'Nitish Kundala',
+          team1:a1,
+          team2:a2,
           id:'2017xxpsxxxxp',
           format:'jpg',
-          index: 10
+          index: 12
         },
         {
           name:'Piyush Ranjan',
@@ -102,13 +94,21 @@ class Wrapper extends React.Component {
           index: 11
         },
         {
-          name:'Nitish Kundala',
-          team1:a1,
-          team2:a2,
+          name:'Kunal Sharma',
+          team1:b1,
+          team2:b2,
           id:'2017xxpsxxxxp',
           format:'jpg',
-          index: 12
-        }
+          index: 9
+        },
+        {
+          name:'Amey Agarwal',
+          team1:d1,
+          team2:d2,
+          id:'2017xxpsxxxxp',
+          format:'png',
+          index: 7
+        },
       ],
       venue:'Kamal',
       time:'8:00',
