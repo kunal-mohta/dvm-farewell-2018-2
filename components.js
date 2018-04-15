@@ -169,8 +169,9 @@ class Name extends React.Component {
   render() {
     let props = this.props;
     let name = props.content.split(' ');
+    let mainClass = (name[0].length > 9 || name[1].length > 9) ? 'longname name' : 'name';
     return (
-      <div className = 'name'><span class="nameBar top" /><span className = 'firstname'>{name[0]}</span><br/><span className = 'lastname'>{name[1]}</span><span class="nameBar" /></div>
+      <div className = {mainClass}><span class="nameBar top" /><span className = 'firstname'>{name[0]}</span><br/><span className = 'lastname'>{name[1]}</span><span class="nameBar" /></div>
     );
   }
 }
@@ -475,23 +476,18 @@ $(document).ready(function(){
   var x1, y1;
 
   //touch
-  document.addEventListener("touchstart", function(e){
-    if(state){
-      x1 = e.changedTouches[0].pageX;
-      y1 = e.changedTouches[0].pageY;
-    }
-  });
+  var zingContainerElem = document.getElementsByTagName("body")[0];
+  var activeRegion = ZingTouch.Region(zingContainerElem, true, false);
+  activeRegion.bind(document.getElementById("wrapper"), 'swipe', function(e) {
+    var angle = e.detail.data[0].currentDirection;
 
-  document.addEventListener("touchend", function(e){
-    if(state){
-      var deltaX = e.changedTouches[0].pageX - x1;
-      var deltaY = e.changedTouches[0].pageY - y1;
-  
-        //left
-        if(deltaX < 0) prevPerson();
-  
-        //right
-        else if(deltaY > 0) nextPerson();
+    if(state) {
+      if(angle < 45 || angle > 315) {
+        nextPerson();
+      }
+      else if(angle > 135 && angle < 225) {
+        prevPerson();
+      }
     }
-  });
+  })
 });

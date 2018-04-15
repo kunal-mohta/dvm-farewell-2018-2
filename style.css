@@ -56,6 +56,10 @@ body {
 	z-index: 999;
 	line-height: 0.9;
 }
+.longname {/*always keep this class below "name" class*/
+  left: 5%;
+  font-size: 6.2vw;
+}
 .nameBar {
 	display: block;
 	position: absolute;
@@ -67,7 +71,7 @@ body {
 	top: -7%;
 }
 .firstname {
-	color: #2848be;
+	color: #003571;
 }
 .lastname {
 	color: #260e2c;
@@ -156,7 +160,7 @@ body {
 	width: 7%;
 	height: 7%;
 	z-index: 9999;
-	background: #001f34;
+	background: #260e2c;
 	margin-bottom: 10%;
   transition: all 0.5s ease-in-out;
   -webkit-transition: all 0.5s ease-in-out;
@@ -191,7 +195,7 @@ body {
   width:100%;
   text-align: center;
   position: absolute;
-	bottom: 0%;
+	bottom: -5%;
 	font-size: 19vw;
 	background: -webkit-linear-gradient(#0054bc, #2e3192);
 	background: -o-linear-gradient(#0054bc, #2e3192);
@@ -238,11 +242,14 @@ body {
   font-size: 6vh;
   color: #260e2c;
   z-index: 10;
+  opacity: 0.8;
+  transition: 0.1s font-size;
 }
 
 .click-here:hover {
   cursor: pointer;
   color: #2848be;
+  font-size: 6.1vh;
 }
 
 @media all and (max-width : 600px){
@@ -267,6 +274,9 @@ body {
   left: 8%;
   font-size: 20vw;
   top: 52%;
+}
+.longname {
+  font-size: 15vw;
 }
 .team1 {
   top: 91%;
