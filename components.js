@@ -18,84 +18,96 @@ class Wrapper extends React.Component {
           team1:f1,
           team2:f2,
           id:'2017xxpsxxxxp',
-          format:'jpg'
+          format:'jpg',
+          index: 1
         },
         {
           name:'Shivani Mittal',
           team1:a1,
           team2:a2,
           id:'2017xxpsxxxxp',
-          format:'jpg'
+          format:'jpg',
+          index: 2
         },
         {
           name:'Jai Agarwal',
           team1:a1,
           team2:a2,
           id:'2017xxpsxxxxp',
-          format:'jpg'
+          format:'jpg',
+          index: 3
         },
         {
           name:'Arjun Tyagi',
           team1:v1,
           team2:v2,
           id:'2017xxpsxxxxp',
-          format:'jpg'
+          format:'jpg',
+          index: 4
         },
         {
           name:'Vihang Shah',
           team1:d1,
           team2:d2,
           id:'2017xxpsxxxxp',
-          format:'jpg'
+          format:'jpg',
+          index: 5
         },
         {
           name:'Vishal Hans',
           team1:d1,
           team2:d2,
           id:'2017xxpsxxxxp',
-          format:'jpg'
+          format:'jpg',
+          index: 6
         },
         {
           name:'Amey Agarwal',
           team1:d1,
           team2:d2,
           id:'2017xxpsxxxxp',
-          format:'png'
+          format:'png',
+          index: 7
         },
         {
           name:'Satwik Bhattamishra',
           team1:b1,
           team2:b2,
           id:'2017xxpsxxxxp',
-          format:'jpg'
+          format:'jpg',
+          index: 8
         },
         {
           name:'Kalpit Munot',
           team1:v1,
           team2:v2,
           id:'2017xxpsxxxxp',
-          format:'jpg'
+          format:'jpg',
+          index: 9
         },
         {
           name:'Kunal Sharma',
           team1:b1,
           team2:b2,
           id:'2017xxpsxxxxp',
-          format:'jpg'
+          format:'jpg',
+          index: 10
         },
         {
           name:'Piyush Ranjan',
           team1:f1,
           team2:f2,
           id:'2017xxpsxxxxp',
-          format:'jpg'
+          format:'jpg',
+          index: 11
         },
         {
           name:'Nitish Kundala',
           team1:a1,
           team2:a2,
           id:'2017xxpsxxxxp',
-          format:'jpg'
+          format:'jpg',
+          index: 12
         }
       ],
       venue:'Kamal',
@@ -108,7 +120,7 @@ class Wrapper extends React.Component {
     let people = this.state.people;
     return (
       people.map((person, index) => 
-        <PersonContainer key={index} name={person.name} team1={person.team1} team2={person.team2} id={person.id} img={`./images/main/${index+1}.${person.format}`} venue={this.state.venue} time={this.state.time} description={this.state.description}/>
+        <PersonContainer key={index} name={person.name} team1={person.team1} team2={person.team2} id={person.id} img={`./images/main/${person.index}.${person.format}`} venue={this.state.venue} time={this.state.time} description={this.state.description}/>
       )
     );
   }
