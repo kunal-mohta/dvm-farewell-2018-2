@@ -56,24 +56,15 @@ body {
 	z-index: 999;
 	line-height: 0.9;
 }
-.name::before {
-	content: '';
+.nameBar {
+	display: block;
 	position: absolute;
-	width: 30%;
+	width: 50%;
 	height: 3px;
-	border-top: 3px solid #0071bc;
-	top: -10%;
-	border-height: 30%;
+	background: #0071bc;
 }
-.name::after {
-	content: '';
-	position: absolute;
-	top: 101%;
-	left: 0%;
-	width: 30%;
-	height: 3px;
-	border-bottom: 3px solid #0071bc;
-	border-height: 30%;
+.top {
+	top: -7%;
 }
 .firstname {
 	color: #2848be;
@@ -242,7 +233,7 @@ body {
 
 .click-here {
   position: absolute;
-  top: 80%;
+  top: 82%;
   left: 10%;
   font-size: 6vh;
   color: #260e2c;

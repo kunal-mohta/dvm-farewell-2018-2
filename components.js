@@ -138,7 +138,7 @@ class PersonContainer extends React.Component {
         <div className="bar"></div>
         <Team class = 'team2' content={props.team2} />
         <Picture src={props.img} />
-        <Name content={props.name} />
+        <Name content={props.name}></Name>
         <Team class = 'team1' content={props.team1} />
         <Id content={props.id} />
         <Description content={props.description}/>
@@ -170,7 +170,7 @@ class Name extends React.Component {
     let props = this.props;
     let name = props.content.split(' ');
     return (
-      <div className = 'name'><span className = 'firstname'>{name[0]}</span><br/><span className = 'lastname'>{name[1]}</span></div>
+      <div className = 'name'><span class="nameBar top" /><span className = 'firstname'>{name[0]}</span><br/><span className = 'lastname'>{name[1]}</span><span class="nameBar" /></div>
     );
   }
 }
@@ -234,6 +234,9 @@ ReactDOM.render(
 )
 
 $(document).ready(function(){
+  
+  document.getElementsByClassName('click-here')[0].style.top = document.getElementsByClassName('dept-name')[0].clientHeight + $('.dept-name').offset().top - $('.dept-name').parent().offset().top - $('.dept-name').parent().scrollTop() + 10 + "px";
+
   var state = 0;
   var containers = document.getElementsByClassName('personContainer');
   var pics = document.getElementsByClassName('pic');
