@@ -15,7 +15,7 @@ class Wrapper extends React.Component {
       people:[
         {
           name:'Arjun Tyagi',
-          team1:v1,
+          team1:'STUCCAN\'17',
           team2:v2,
           id:'2017xxpsxxxxp',
           format:'jpg',
@@ -23,7 +23,7 @@ class Wrapper extends React.Component {
         },
         {
           name:'Prateek Gupta',
-          team1:f1,
+          team1:'COSTAAN\'17',
           team2:f2,
           id:'2017xxpsxxxxp',
           format:'jpg',
@@ -106,21 +106,23 @@ class Wrapper extends React.Component {
           team1:d1,
           team2:d2,
           id:'2017xxpsxxxxp',
-          format:'png',
+          format:'jpg',
           index: 7
         },
       ],
-      venue:'Kamal',
+      venue:'Kamal\'s',
       time:'8:00',
-      description:'blah blah'
+      date:'April 18',
+      // description:'blah blah'
     }
   }
 
   render() {
     let people = this.state.people;
+    let quote = '#nobodydoesitbetter';
     return (
       people.map((person, index) => 
-        <PersonContainer key={index} name={person.name} team1={person.team1} team2={person.team2} id={person.id} img={`./images/main/${person.index}.${person.format}`} venue={this.state.venue} time={this.state.time} description={this.state.description}/>
+        <PersonContainer key={index} name={person.name} team1={person.team1} team2={person.team2} id={person.id} quote={quote} img={`./images/main/${person.index}.${person.format}`} venue={this.state.venue} time={this.state.time} date={this.state.date} description={this.state.description}/>
       )
     );
   }
@@ -141,8 +143,9 @@ class PersonContainer extends React.Component {
         <Name content={props.name}></Name>
         <Team class = 'team1' content={props.team1} />
         <Id content={props.id} />
-        <Description content={props.description}/>
-        <Venue venue={props.venue} time={props.time} />
+        <div className="quote">{props.quote}</div>
+        {/* <Description content={props.description}/> */}
+        <Venue venue={props.venue} time={props.time} date={props.date}/>
       </div>
     );
   }
@@ -202,18 +205,29 @@ class Id extends React.Component {
   }
 }
 
-class Description extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+// class Description extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   }class Description extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   }
   
-  render() {
-    let props = this.props;
-    return (
-      <div className = 'description'>{props.content}</div>
-    );
-  }
-}
+//   render() {
+//     let props = this.props;
+//     return (
+//       <div className = 'description'>{props.content}</div>
+//     );
+//   }
+// }
+  
+//   render() {
+//     let props = this.props;
+//     return (
+//       <div className = 'description'>{props.content}</div>
+//     );
+//   }
+// }
 
 class Venue extends React.Component {
   constructor(props) {
@@ -223,7 +237,10 @@ class Venue extends React.Component {
   render() {
     let props = this.props;
     return (
-      <div className = 'venue'>{props.venue} {props.time}</div>
+      <div className = 'venue'>
+        {props.date}<br />
+        {props.venue}
+      </div>
     );
   }
 }
@@ -262,7 +279,7 @@ $(document).ready(function(){
     teamTop = "91%";
   }
   else {
-    barLength = "65%";
+    barLength = "60%";
     teamTop = (container.clientHeight + pic.clientHeight)/2 + "px";
   }
 
@@ -277,6 +294,7 @@ $(document).ready(function(){
   var sideBars = document.getElementsByClassName("side-bar");
 
   sideBars[0].style.width = '100%';
+  bars[0].style.width = barLength;
 
   for(var i=1; i<pics.length; i++)
   {
