@@ -112,7 +112,7 @@ class Wrapper extends React.Component {
       ],
       venue:'Kamal\'s',
       time:'8:00',
-      date:'April 18',
+      date:'April 19',
       // description:'blah blah'
     }
   }
