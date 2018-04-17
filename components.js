@@ -288,10 +288,11 @@ $(document).ready(function(){
   
   for(var i=0; i<containers.length; i++)
   {
-    document.getElementById("side-wrap").innerHTML+='<div class="side-bar"></div>';
+    document.getElementById("side-wrap").innerHTML+='<div class="side-bar-wrap" id="wrap'+i+'"><div class="side-bar"></div><span>';
   }
 
   var sideBars = document.getElementsByClassName("side-bar");
+  var sideBarsWrap = document.getElementsByClassName("side-bar-wrap");
 
   sideBars[0].style.width = '100%';
   bars[0].style.width = barLength;
@@ -313,6 +314,8 @@ $(document).ready(function(){
     bars[i].style.width = 0;
   }
 
+
+  var num=0;
   var active = 0;
   var next, prev;
 
@@ -322,6 +325,7 @@ $(document).ready(function(){
 
   function nextPerson()
   {
+    active = parseInt(active);
     if(isAnimationRunning) return false;
 
     else{
@@ -372,6 +376,7 @@ $(document).ready(function(){
   
   function prevPerson()
   {
+    active = parseInt(active);
     if(isAnimationRunning) 
       return false;
     else {
@@ -417,6 +422,58 @@ $(document).ready(function(){
       }, 600);
       setTimeout(function(){active=prev; isAnimationRunning = 0;}, 1300);
     }
+  }
+  
+  var i;
+  for(i=0; i<containers.length; i++)
+  {
+    sideBarsWrap[i].addEventListener("click", switchPerson);
+  }
+  
+  function switchPerson(e)
+  {
+    next = this.id.replace( /^\D+/g, '');
+    if(isAnimationRunning) 
+      return false;
+    else{
+      isAnimationRunning = 1;
+      containers[next].style.display = 'flex';
+      pics[active].style.opacity = "0";
+      setTimeout(function(){pics[next].style.opacity = 1;}, 300);
+      bars[active].style.width = "0px";
+      setTimeout(function(){bars[next].style.width = barLength;}, 750);
+
+      sideBars[active].style.width = "7%";
+      setTimeout(function(){sideBars[next].style.width='100%';}, 500);  
+
+      $('.team1:eq('+active+')').animate({
+        top: "110%"
+      });
+      $('.team2:eq('+active+')').animate({
+        opacity: '0',
+      }, 500);
+      setTimeout(function(){
+        $('.team2:eq('+(next)+')').animate({
+          opacity: '0.3',
+        }, 600);
+      }, 450);
+      $('.name:eq('+active+')').animate({
+        width: '0',
+        opacity: '0',
+      }, 1000);
+      setTimeout(function(){
+        $('.name:eq('+(next)+')').animate({
+          width: '200px',
+          opacity: '1',
+        });
+      }, 1100);
+      setTimeout(function(){
+        $('.team1:eq('+(next)+')').animate({
+          top: teamTop
+        });
+      }, 600);
+      setTimeout(function(){active=next; isAnimationRunning = 0;}, 1300);
+      }
   }
 
   function fadeToMain() {

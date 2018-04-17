@@ -42,10 +42,10 @@ body {
 	z-index: 99;
 	position: absolute;	
 	right: 15%;
-  transition: opacity 1s ease-in-out;
   -webkit-transition: opacity 1s ease-in-out;
   -moz-transition: opacity 1s ease-in-out;
   -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
 }
 .name {
 	position: absolute;
@@ -66,6 +66,10 @@ body {
 	width: 50%;
 	height: 3px;
 	background: #0071bc;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
 }
 .top {
 	top: -7%;
@@ -166,12 +170,25 @@ body {
   -o-transition: opacity 0.5s ease-in-out;
   transition: opacity 0.5s ease-in-out;
 }
+.side-bar-wrap {
+  width: 100%;
+  height: 7%;
+  z-index: 9999;
+  margin-bottom: 10%;
+  cursor: pointer;
+}
+.side-bar-wrap:hover .side-bar {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  width: 100% !important;
+}
 .side-bar {
 	width: 7%;
-	height: 7%;
+	height: 100%;
 	z-index: 9999;
 	background: #260e2c;
-	margin-bottom: 10%;
   transition: all 0.5s ease-in-out;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
