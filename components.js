@@ -429,13 +429,14 @@ $(document).ready(function(){
   {
     sideBarsWrap[i].addEventListener("click", switchPerson);
   }
-  
   function switchPerson(e)
   {
-    next = this.id.replace( /^\D+/g, '');
-    if(isAnimationRunning) 
-      return false;
+    if(isAnimationRunning)
+      return;
     else{
+      next = this.id.replace( /^\D+/g, '');
+      if(parseInt(next)==active)
+        return;
       isAnimationRunning = 1;
       containers[next].style.display = 'flex';
       pics[active].style.opacity = "0";
@@ -472,8 +473,8 @@ $(document).ready(function(){
           top: teamTop
         });
       }, 600);
-      setTimeout(function(){active=next; isAnimationRunning = 0;}, 1300);
-      }
+      setTimeout(function(){active=next; isAnimationRunning = 0;}, 1500);
+    }
   }
 
   function fadeToMain() {
