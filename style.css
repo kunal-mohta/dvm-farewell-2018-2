@@ -19,7 +19,7 @@ body, html {
   overflow: hidden;
 }
 body {
-  background: url('./images/bg.png');
+  background: url('./images/bg.jpg');
   background-size: cover;
 }
 #wrapper {
