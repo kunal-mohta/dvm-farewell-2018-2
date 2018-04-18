@@ -75,7 +75,8 @@ body {
 	top: -7%;
 }
 .firstname {
-	color: #003571;
+  /* color: #003571; */
+  color: #260e2c;
 }
 .lastname {
 	color: #260e2c;
