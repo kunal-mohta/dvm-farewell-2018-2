@@ -119,7 +119,7 @@ class Wrapper extends React.Component {
 
   render() {
     let people = this.state.people;
-    let quote = '#nobodydoesitbetter';
+    let quote = 'Nobody Does It Better';
     return (
       people.map((person, index) => 
         <PersonContainer key={index} name={person.name} team1={person.team1} team2={person.team2} id={person.id} quote={quote} img={`./images/main/${person.index}.${person.format}`} venue={this.state.venue} time={this.state.time} date={this.state.date} description={this.state.description}/>
@@ -559,10 +559,10 @@ $(document).ready(function(){
 
     if(state) {
       if(angle < 45 || angle > 315) {
-        nextPerson();
+        prevPerson();//this is prevPerson due to the end minute orientation change of the anchor points
       }
       else if(angle > 135 && angle < 225) {
-        prevPerson();
+        nextPerson();
       }
     }
   })

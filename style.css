@@ -2,6 +2,10 @@
 	font-family: BebasNeue;
 	src: url(./fonts/BebasNeue-Regular.ttf);
 }
+@font-face {
+	font-family: AgencyFB;
+	src: url(./fonts/agency-fb.ttf);
+}
 body, html {
 	margin: 0;
 	padding: 0;
@@ -65,7 +69,7 @@ body {
 	position: absolute;
 	width: 50%;
 	height: 3px;
-	background: #0071bc;
+	background: #260e2c;
   -webkit-transition: opacity 1s ease-in-out;
   -moz-transition: opacity 1s ease-in-out;
   -o-transition: opacity 1s ease-in-out;
@@ -92,15 +96,16 @@ body {
   position: absolute;
   right: 5%;
   font-size: 8vw;
-  background: -webkit-linear-gradient(#a6cdff, #2e3f92);
-  background: -o-linear-gradient(#a6cdff, #2e3f92);
-  background: linear-gradient(#a6cdff, #2e3f92);
+  /* background: -webkit-linear-gradient(#2e3192, #0152ba);
+  background: -o-linear-gradient(#2e3192, #0152ba);
+  background: linear-gradient(#2e3192, #0152ba); */
+  background: #260e2c;
+  background-clip: text;
+  text-fill-color: transparent;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* transition: all 0.5s linear;
-  -webkit-transition: all 0.5s linear;
-  -moz-transition: all 0.5s linear;
-  -o-transition: all 0.5s linear; */
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;  
   z-index: 999;
   bottom: -10%;
 }
@@ -153,6 +158,8 @@ body {
   left: 3%;
   font-size: 5.5vh;
   color: #260e2c;
+  font-family: 'AgencyFB', arial;
+  text-transform: none;
 }
 
 #side-wrap {
@@ -304,11 +311,15 @@ body {
   font-size: 4.5vh;
   width: 100%;
   text-align: center;
+  text-transform: none;
 }
 .name {
   left: 8%;
   font-size: 20vw;
   top: 52%;
+}
+.firstname {
+  color: #260e2c;
 }
 .longname {
   font-size: 15vw;
@@ -329,7 +340,7 @@ body {
   display:none;
 }
 #side-wrap {
-  transform: rotateZ(90deg);
+  transform: rotateZ(90deg) rotateX(180deg);
   top:-22%;
   left: 45.5%;
   width: 10%;
